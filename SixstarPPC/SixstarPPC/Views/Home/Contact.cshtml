@@ -1,17 +1,87 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Index/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/Content/Index/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Index/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Index/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Index/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Index/styles/contact_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Index/styles/contact_responsive.css">
+</head>
+<body>
+<div class="contact">
+    <div class="container">
+        <div class="row">
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+            <div class="col-lg-6 contact_col">
+                <div class="estate_contact_form">
+                    <div class="contact_title">say hello</div>
+                    <div class="estate_contact_form_container">
+                        <form id="estate_contact_form" class="estate_contact_form" action="post">
+                            <input id="estate_contact_form_name" class="estate_input_field estate_contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
+                            <input id="estate_contact_form_email" class="estate_input_field estate_contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
+                            <input id="estate_contact_form_subject" class="estate_input_field estate_contact_form_subject" type="email" placeholder="Subject" required="required" data-error="Subject is required.">
+                            <textarea id="estate_contact_form_message" class="estate_text_field estate_contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+                            <button id="estate_contact_send_btn" type="submit" class="estate_contact_send_btn trans_200" value="Submit">send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            <div class="col-lg-3 contact_col">
+                <div class="contact_title">contact info</div>
+                <ul class="contact_info_list estate_contact">
+                    <li class="contact_info_item d-flex flex-row">
+                        <div><div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div></div>
+                        <div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
+                    </li>
+                    <li class="contact_info_item d-flex flex-row">
+                        <div><div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div></div>
+                        <div class="contact_info_text">2556-808-8613</div>
+                    </li>
+                    <li class="contact_info_item d-flex flex-row">
+                        <div><div class="contact_info_icon"><img src="images/message.svg" alt=""></div></div>
+                        <div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
+                    </li>
+                    <li class="contact_info_item d-flex flex-row">
+                        <div><div class="contact_info_icon"><img src="images/planet-earth.svg" alt=""></div></div>
+                        <div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
+                    </li>
+                </ul>
+                <div class="estate_social">
+                    <ul class="estate_social_list">
+                        <li class="estate_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                        <li class="estate_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="estate_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="estate_social_item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                        <li class="estate_social_item"><a href="#"><i class="fab fa-behance"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 contact_col">
+                <div class="contact_title">about</div>
+                <div class="estate_about_text">
+                    <p>Lorem ipsum dolor sit amet, cons ectetur  quis ferme adipiscing elit. Suspen dis se tellus eros, placerat quis ferme ntum et, adipiscingvive rra sit ipsum amet lacus. </p>
+                    <p>Nam gravida quis placerat quis fe rme ntum et ferme sadipiscinge te llus semper augue.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="~Content/Index/js/jquery-3.2.1.min.js"></script>
+<script src="~Content/Index/styles/bootstrap4/popper.js"></script>
+<script src="~Content/Index/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~Content/Index/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~Content/Index/plugins/easing/easing.js"></script>
+<script src="~Content/Index/js/contact_custom.js"></script>
+
+
+
+</body>
+
