@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -421,7 +421,7 @@ section
 	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
-	color: #FFFFFF;
+	color: wheat;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	-webkit-transition: all 200ms ease;
