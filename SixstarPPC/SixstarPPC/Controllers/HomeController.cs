@@ -26,5 +26,23 @@ namespace SixstarPPC.Controllers
 
             return View();
         }
+        public ActionResult News()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Collections()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult SinglePropety()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

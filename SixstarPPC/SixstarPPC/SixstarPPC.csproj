@@ -176,7 +176,7 @@
     <Content Include="Content\Index\images\listing_5.jpg" />
     <Content Include="Content\Index\images\listing_slider_1.jpg" />
     <Content Include="Content\Index\images\listing_video.jpg" />
-    <Content Include="Content\Index\images\logo.png" />
+    <Content Include="Content\Index\images\Logo.png" />
     <Content Include="Content\Index\images\map_marker.png" />
     <Content Include="Content\Index\images\map_marker_small.png" />
     <Content Include="Content\Index\images\message.svg" />
@@ -264,6 +264,7 @@
     <Content Include="Content\Index\styles\listings_single_responsive.css" />
     <Content Include="Content\Index\styles\listings_single_styles.css" />
     <Content Include="Content\Index\styles\listings_styles.css" />
+    <Content Include="Content\Index\styles\logocss.css" />
     <Content Include="Content\Index\styles\main_styles.css" />
     <Content Include="Content\Index\styles\news_responsive.css" />
     <Content Include="Content\Index\styles\news_styles.css" />
@@ -310,10 +311,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Collections.cshtml" />
+    <Content Include="Views\Home\SinglePropety.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\PartialView\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
