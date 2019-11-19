@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ppcdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_ID" Type="int" Nullable="false" />
+          <Property Name="District_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Full_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Full_Contract_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Year_Of_Birth" Type="int" />
+          <Property Name="SSN" Type="varchar" MaxLength="15" />
+          <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
+          <Property Name="Date_Of_Contract" Type="date" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Deposit" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Remain" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Installment_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Installment_Contract_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year_Of_Birth" Type="int" />
+          <Property Name="SSN" Type="varchar" MaxLength="15" />
+          <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" />
+          <Property Name="Property_ID" Type="int" />
+          <Property Name="Date_Of_Contract" Type="date" />
+          <Property Name="Installment_Payment_Method" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Payment_Period" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Deposit" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Loan_Amount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Taken" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Remain" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_Code" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Property_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Property_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="District_ID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Area" Type="int" />
+          <Property Name="Bed_Room" Type="int" />
+          <Property Name="Bath_Room" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Installment_Rate" Type="float" />
+          <Property Name="Avatar" Type="nvarchar(max)" />
+          <Property Name="Album" Type="nvarchar(max)" />
+          <Property Name="Property_Status_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property_Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service_ID" Type="int" Nullable="false" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_Status_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Property_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Property_Type_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Property_Amount" Type="int" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_District_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="City_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Full_Contract_Property">
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
+          <End Role="Full_Contract" Type="Self.Full_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Full_Contract">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Installment_Contract_Property">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="Installment_Contract" Type="Self.Installment_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Installment_Contract">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="District_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Property_Status">
+          <End Role="Property_Status" Type="Self.Property_Status" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Property_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Property_Type">
+          <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Property_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Service_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Property_Service" Type="Self.Property_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property_Service">
+              <PropertyRef Name="Service_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ppcdbModelStoreContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Full_Contract" EntityType="Self.Full_Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Installment_Contract" EntityType="Self.Installment_Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Service" EntityType="Self.Property_Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Status" EntityType="Self.Property_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="District" EntitySet="District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Full_Contract_Property" Association="Self.FK_Full_Contract_Property">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Full_Contract" EntitySet="Full_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Installment_Contract_Property" Association="Self.FK_Installment_Contract_Property">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Installment_Contract" EntitySet="Installment_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_District" Association="Self.FK_Property_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Property" EntitySet="Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Property_Status" Association="Self.FK_Property_Property_Status">
+            <End Role="Property_Status" EntitySet="Property_Status" />
+            <End Role="Property" EntitySet="Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Property_Type" Association="Self.FK_Property_Property_Type">
+            <End Role="Property_Type" EntitySet="Property_Type" />
+            <End Role="Property" EntitySet="Property" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Service_Service" Association="Self.FK_Property_Service_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Property_Service" EntitySet="Property_Service" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ppcdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_District_City" FromRole="City" ToRole="District" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_ID" Type="Int32" Nullable="false" />
+          <Property Name="District_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="Self.FK_District_City" FromRole="District" ToRole="City" />
+          <NavigationProperty Name="Properties" Relationship="Self.FK_Property_District" FromRole="District" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Full_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Full_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year_Of_Birth" Type="Int32" />
+          <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date_Of_Contract" Type="DateTime" Precision="0" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Deposit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Remain" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Property" Relationship="Self.FK_Full_Contract_Property" FromRole="Full_Contract" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Installment_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Installment_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year_Of_Birth" Type="Int32" />
+          <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Property_ID" Type="Int32" />
+          <Property Name="Date_Of_Contract" Type="DateTime" Precision="0" />
+          <Property Name="Installment_Payment_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Payment_Period" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Deposit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Loan_Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Taken" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Remain" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Property" Relationship="Self.FK_Installment_Contract_Property" FromRole="Installment_Contract" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_Code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Property_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="District_ID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="Bed_Room" Type="Int32" />
+          <Property Name="Bath_Room" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Installment_Rate" Type="Double" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Album" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Property_Status_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Property_District" FromRole="Property" ToRole="District" />
+          <NavigationProperty Name="Full_Contract" Relationship="Self.FK_Full_Contract_Property" FromRole="Property" ToRole="Full_Contract" />
+          <NavigationProperty Name="Installment_Contract" Relationship="Self.FK_Installment_Contract_Property" FromRole="Property" ToRole="Installment_Contract" />
+          <NavigationProperty Name="Property_Status" Relationship="Self.FK_Property_Property_Status" FromRole="Property" ToRole="Property_Status" />
+          <NavigationProperty Name="Property_Type" Relationship="Self.FK_Property_Property_Type" FromRole="Property" ToRole="Property_Type" />
+        </EntityType>
+        <EntityType Name="Property_Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_ID" Type="Int32" Nullable="false" />
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Property_Service_Service" FromRole="Property_Service" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Property_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Properties" Relationship="Self.FK_Property_Property_Status" FromRole="Property_Status" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Property_Amount" Type="Int32" />
+          <NavigationProperty Name="Properties" Relationship="Self.FK_Property_Property_Type" FromRole="Property_Type" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Property_Service" Relationship="Self.FK_Property_Service_Service" FromRole="Service" ToRole="Property_Service" />
+        </EntityType>
+        <Association Name="FK_District_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="City_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="District_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Full_Contract_Property">
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
+          <End Role="Full_Contract" Type="Self.Full_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Full_Contract">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Installment_Contract_Property">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="Installment_Contract" Type="Self.Installment_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Installment_Contract">
+              <PropertyRef Name="Property_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Property_Status">
+          <End Role="Property_Status" Type="Self.Property_Status" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Property_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Property_Type">
+          <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property">
+              <PropertyRef Name="Property_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Property_Service_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Property_Service" Type="Self.Property_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Property_Service">
+              <PropertyRef Name="Service_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ppcdbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Full_Contract" EntityType="Self.Full_Contract" />
+          <EntitySet Name="Installment_Contract" EntityType="Self.Installment_Contract" />
+          <EntitySet Name="Properties" EntityType="Self.Property" />
+          <EntitySet Name="Property_Service" EntityType="Self.Property_Service" />
+          <EntitySet Name="Property_Status" EntityType="Self.Property_Status" />
+          <EntitySet Name="Property_Type" EntityType="Self.Property_Type" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_District" Association="Self.FK_Property_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Full_Contract_Property" Association="Self.FK_Full_Contract_Property">
+            <End Role="Property" EntitySet="Properties" />
+            <End Role="Full_Contract" EntitySet="Full_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Installment_Contract_Property" Association="Self.FK_Installment_Contract_Property">
+            <End Role="Property" EntitySet="Properties" />
+            <End Role="Installment_Contract" EntitySet="Installment_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Property_Status" Association="Self.FK_Property_Property_Status">
+            <End Role="Property_Status" EntitySet="Property_Status" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Property_Type" Association="Self.FK_Property_Property_Type">
+            <End Role="Property_Type" EntitySet="Property_Type" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Property_Service_Service" Association="Self.FK_Property_Service_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="Property_Service" EntitySet="Property_Service" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ppcdbModelStoreContainer" CdmEntityContainer="ppcdbEntities1">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="ppcdbModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="ppcdbModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+                <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Full_Contract">
+            <EntityTypeMapping TypeName="ppcdbModel.Full_Contract">
+              <MappingFragment StoreEntitySet="Full_Contract">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Full_Contract_Code" ColumnName="Full_Contract_Code" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Year_Of_Birth" ColumnName="Year_Of_Birth" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Date_Of_Contract" ColumnName="Date_Of_Contract" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Installment_Contract">
+            <EntityTypeMapping TypeName="ppcdbModel.Installment_Contract">
+              <MappingFragment StoreEntitySet="Installment_Contract">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Installment_Contract_Code" ColumnName="Installment_Contract_Code" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Year_Of_Birth" ColumnName="Year_Of_Birth" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+                <ScalarProperty Name="Date_Of_Contract" ColumnName="Date_Of_Contract" />
+                <ScalarProperty Name="Installment_Payment_Method" ColumnName="Installment_Payment_Method" />
+                <ScalarProperty Name="Payment_Period" ColumnName="Payment_Period" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+                <ScalarProperty Name="Loan_Amount" ColumnName="Loan_Amount" />
+                <ScalarProperty Name="Taken" ColumnName="Taken" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="ppcdbModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Property_Code" ColumnName="Property_Code" />
+                <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+                <ScalarProperty Name="Property_Type_ID" ColumnName="Property_Type_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bed_Room" ColumnName="Bed_Room" />
+                <ScalarProperty Name="Bath_Room" ColumnName="Bath_Room" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Installment_Rate" ColumnName="Installment_Rate" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Album" ColumnName="Album" />
+                <ScalarProperty Name="Property_Status_ID" ColumnName="Property_Status_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Service">
+            <EntityTypeMapping TypeName="ppcdbModel.Property_Service">
+              <MappingFragment StoreEntitySet="Property_Service">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+                <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Status">
+            <EntityTypeMapping TypeName="ppcdbModel.Property_Status">
+              <MappingFragment StoreEntitySet="Property_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Property_Status_Name" ColumnName="Property_Status_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property_Type">
+            <EntityTypeMapping TypeName="ppcdbModel.Property_Type">
+              <MappingFragment StoreEntitySet="Property_Type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Property_Type_Name" ColumnName="Property_Type_Name" />
+                <ScalarProperty Name="Property_Amount" ColumnName="Property_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="ppcdbModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
