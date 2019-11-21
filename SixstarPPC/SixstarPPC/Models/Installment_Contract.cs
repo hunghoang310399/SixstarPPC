@@ -21,7 +21,7 @@ namespace SixstarPPC.Models
         public string SSN { get; set; }
         public string Customer_Address { get; set; }
         public string Mobile { get; set; }
-        public Nullable<int> Property_ID { get; set; }
+        public int Property_ID { get; set; }
         public Nullable<System.DateTime> Date_Of_Contract { get; set; }
         public string Installment_Payment_Method { get; set; }
         public Nullable<int> Payment_Period { get; set; }

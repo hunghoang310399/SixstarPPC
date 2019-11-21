@@ -13,10 +13,10 @@ namespace SixstarPPC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ppcdbEntities1 : DbContext
+    public partial class ppcdbEntities : DbContext
     {
-        public ppcdbEntities1()
-            : base("name=ppcdbEntities1")
+        public ppcdbEntities()
+            : base("name=ppcdbEntities")
         {
         }
     

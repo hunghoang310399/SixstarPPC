@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace SixstarPPC.Areas.AdminPPC
+namespace SixstarPPC.Areas.Admin
 {
-    public class AdminPPCAreaRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "AdminPPC";
+                return "Admin";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "AdminPPC_default",
-                "AdminPPC/{controller}/{action}/{id}",
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

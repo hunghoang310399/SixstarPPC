@@ -128,7 +128,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\AdminPPC\AdminPPCAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\PropertyAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,10 +179,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\ppc0001.jpg" />
+    <Content Include="Images\ppc0002.jpg" />
+    <Content Include="Images\ppc0003.jpg" />
+    <Content Include="Images\ppc0004.jpg" />
+    <Content Include="Images\ppc0005.jpg" />
+    <Content Include="Images\ppc0006.jpg" />
+    <Content Include="Images\ppc0007.jpg" />
+    <Content Include="Images\ppc0008.jpg" />
+    <Content Include="Images\ppc0009.jpg" />
+    <Content Include="Images\ppc0010.jpg" />
+    <Content Include="Images\PPCLogo-128-128.png" />
+    <Content Include="Images\PPCLogo.png" />
+    <Content Include="Images\user2-160x160.jpg" />
+    <Content Include="Content\adminlte.min.css" />
+    <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dataTables.bootstrap4.css" />
+    <Content Include="Scripts\adminlte.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\demo.js" />
     <Content Include="Content\Index\images\agent_1.jpg" />
     <Content Include="Content\Index\images\agent_2.jpg" />
     <Content Include="Content\Index\images\agent_3.jpg" />
@@ -250,6 +271,18 @@
     <Content Include="Content\Index\images\placeholder.svg" />
     <Content Include="Content\Index\images\planet-earth.svg" />
     <Content Include="Content\Index\images\play.svg" />
+    <Content Include="Content\Index\images\ppc0001.jpg" />
+    <Content Include="Content\Index\images\ppc0002.jpg" />
+    <Content Include="Content\Index\images\ppc0003.jpg" />
+    <Content Include="Content\Index\images\ppc0004.jpg" />
+    <Content Include="Content\Index\images\ppc0005.jpg" />
+    <Content Include="Content\Index\images\ppc0006.jpg" />
+    <Content Include="Content\Index\images\ppc0007.jpg" />
+    <Content Include="Content\Index\images\ppc0008.jpg" />
+    <Content Include="Content\Index\images\ppc0009.jpg" />
+    <Content Include="Content\Index\images\ppc0010.jpg" />
+    <Content Include="Content\Index\images\PPCLogo-128-128.png" />
+    <Content Include="Content\Index\images\PPCLogo.png" />
     <Content Include="Content\Index\images\prize.svg" />
     <Content Include="Content\Index\images\profile.svg" />
     <Content Include="Content\Index\images\real-estate.svg" />
@@ -260,11 +293,14 @@
     <Content Include="Content\Index\images\speech-bubble.svg" />
     <Content Include="Content\Index\images\tag.svg" />
     <Content Include="Content\Index\images\testimonials_background.jpg" />
+    <Content Include="Content\Index\images\user2-160x160.jpg" />
     <Content Include="Content\Index\images\weekly.jpg" />
     <Content Include="Content\Index\images\workflow_1.png" />
     <Content Include="Content\Index\images\workflow_2.png" />
     <Content Include="Content\Index\images\workflow_3.png" />
     <Content Include="Content\Index\images\world.png" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Content\Index\js\about_custom.js" />
     <Content Include="Content\Index\js\contact_custom.js" />
     <Content Include="Content\Index\js\custom.js" />
@@ -348,7 +384,9 @@
     <Content Include="Content\Index\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\Index\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Index\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
-    <Content Include="Areas\AdminPPC\Views\web.config" />
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -356,6 +394,11 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -384,12 +427,22 @@
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Collections.cshtml" />
     <Content Include="Views\Home\SinglePropety.cshtml" />
+    <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminPPC\Controllers\" />
-    <Folder Include="Areas\AdminPPC\Models\" />
-    <Folder Include="Areas\AdminPPC\Views\Shared\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\PartialView\" />
   </ItemGroup>
   <ItemGroup>

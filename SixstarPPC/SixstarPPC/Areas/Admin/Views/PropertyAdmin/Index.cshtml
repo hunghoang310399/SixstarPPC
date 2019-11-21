@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SixstarPPC.Models.Property>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Index</h2>
+@if (Session["success"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Well done!</strong> @Session["success"]
+    </div>
+}
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Property_Code</th>
+                <th>Property_Name</th>
+                <th>Price</th>
+                <th>Avatar</th>
+                <th>Property_Status_Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Avatar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Album)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property_Status.Property_Status_Name)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Property_Code</th>
+                <th>Property_Name</th>
+                <th>Price</th>
+                <th>Avatar</th>
+                <th>Property_Status_Name</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<!-- /.card-body -->

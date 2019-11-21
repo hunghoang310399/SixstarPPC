@@ -25,10 +25,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Full_Contract_Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Full_Contract_Code" Type="varchar" MaxLength="10" />
           <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Year_Of_Birth" Type="int" />
-          <Property Name="SSN" Type="varchar" MaxLength="15" />
+          <Property Name="SSN" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Mobile" Type="varchar" MaxLength="15" />
           <Property Name="Property_ID" Type="int" Nullable="false" />
@@ -43,13 +43,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Installment_Contract_Code" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Installment_Contract_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Year_Of_Birth" Type="int" />
-          <Property Name="SSN" Type="varchar" MaxLength="15" />
+          <Property Name="SSN" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Mobile" Type="varchar" MaxLength="15" />
-          <Property Name="Property_ID" Type="int" />
+          <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="Date_Of_Contract" Type="date" />
           <Property Name="Installment_Payment_Method" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Payment_Period" Type="int" />
@@ -65,7 +65,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Property_Code" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Property_Code" Type="varchar" MaxLength="7" />
           <Property Name="Property_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Property_Type_ID" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
@@ -135,7 +135,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Installment_Contract_Property">
-          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
           <End Role="Installment_Contract" Type="Self.Installment_Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Property">
@@ -261,10 +261,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Full_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Full_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Year_Of_Birth" Type="Int32" />
-          <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Property_ID" Type="Int32" Nullable="false" />
@@ -280,13 +280,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Installment_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Installment_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Year_Of_Birth" Type="Int32" />
-          <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Property_ID" Type="Int32" />
+          <Property Name="Property_ID" Type="Int32" Nullable="false" />
           <Property Name="Date_Of_Contract" Type="DateTime" Precision="0" />
           <Property Name="Installment_Payment_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Payment_Period" Type="Int32" />
@@ -303,7 +303,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Property_Code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Property_Code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
           <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Property_Type_ID" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -394,7 +394,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Installment_Contract_Property">
-          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
           <End Role="Installment_Contract" Type="Self.Installment_Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Property">
@@ -441,7 +441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ppcdbEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ppcdbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cities" EntityType="Self.City" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="Full_Contract" EntityType="Self.Full_Contract" />
@@ -485,7 +485,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ppcdbModelStoreContainer" CdmEntityContainer="ppcdbEntities1">
+        <EntityContainerMapping StorageEntityContainer="ppcdbModelStoreContainer" CdmEntityContainer="ppcdbEntities">
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="ppcdbModel.City">
               <MappingFragment StoreEntitySet="City">
