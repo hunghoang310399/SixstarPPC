@@ -102,6 +102,12 @@ namespace SixstarPPC.Areas.Admin.Controllers
             model.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Details(int id)
+        {
+            PopularData();
+            var property = model.Properties.FirstOrDefault(x => x.ID == id);
+            return View(property);
+        }
         public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStatusSelected =null)
         {
             ViewBag.Property_Type_ID = new SelectList(model.Property_Type.ToList(), "ID", "Property_Type_Name",propertyTypeSelected);

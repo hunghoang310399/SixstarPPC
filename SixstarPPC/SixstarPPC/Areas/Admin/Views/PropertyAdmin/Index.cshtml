@@ -4,33 +4,32 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<h2>Danh Sách BĐS</h2>
-@if (Session["success"] != null)
-{
-    <div class="alert alert-success alert-dismissible" role="alert">
+<h2>View List of Property</h2>
 
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Well done!</strong> @Session["success"]
-    </div>
-}
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @if (Session["success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Well done!</strong> @Session["success"]
+        </div>
+    }
 </p>
 <div class="card-body">
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Tên Bất Động Sản</th>
-                <th>Mô tả</th>
-                <th>Giá </th>
-                <th>Ảnh</th>
-                <th>Bộ Sưu Tập</th>
-                <th>Trạng thái</th>
+                <th>Property_Code</th>
+                <th>Property_Name</th>
+                <th>Price</th>
+                <th>Avatar</th>
+                <th>Property_status_Name</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-
 
             @foreach (var item in Model)
             {
@@ -42,41 +41,32 @@
                         @Html.DisplayFor(modelItem => item.Property_Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Price)
                     </td>
                     <td>
-                        <div id="anh"><img src="@Url.Content("~/Images/"+item.Avatar)" width="100" height="100"  /></div>
+                        <img src="@(Url.Content("~/Images/" + item.Avatar))" width="80" />
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Album)
-                    </td>
-
                     <td>
                         @Html.DisplayFor(modelItem => item.Property_Status.Property_Status_Name)
                     </td>
-
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID },new { @class = "btn btn-info" }) 
-                        @Html.ActionLink("Details", "Details", new { id = item.ID },new { @class = "btn btn-warning" })
-                        <button class="btn btn-danger"><a href="~/Admin/PropertyAdmin/Delete?id=@item.ID" onclick="return confirm('Bạn có thực sự muốn xóa');">Delete</a></button>
+                        @Html.ActionLink("Add Contract", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                     </td>
                 </tr>
             }
+
         </tbody>
         <tfoot>
             <tr>
-                <th>ID</th>
-                <th>Tên Bất Động Sản</th>
-                <th>Mô tả</th>
-                <th>Giá </th>
-                <th>Ảnh</th>
-                <th>Bộ Sưu Tập</th>
-                <th>Trạng thái</th>
+                <th>Property_Code</th>
+                <th>Property_Name</th>
+                <th>Price</th>
+                <th>Avatar</th>
+                <th>Property_status_Name</th>
+                <th></th>
             </tr>
         </tfoot>
     </table>
 </div>
-<!-- /.card-body -->
