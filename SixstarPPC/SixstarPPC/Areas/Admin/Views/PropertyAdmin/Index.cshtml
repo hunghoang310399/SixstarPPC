@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<h2>Index</h2>
+<h2>Danh Sách BĐS</h2>
 @if (Session["success"] != null)
 {
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -48,7 +48,7 @@
                         @Html.DisplayFor(modelItem => item.Price)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Avatar)
+                        <div id="anh"><img src="@Url.Content("~/Images/"+item.Avatar)" width="100" height="100"  /></div>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Album)
@@ -59,9 +59,9 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID },new { @class = "btn btn-info" }) 
+                        @Html.ActionLink("Details", "Details", new { id = item.ID },new { @class = "btn btn-warning" })
+                        <button class="btn btn-danger"><a href="~/Admin/PropertyAdmin/Delete?id=@item.ID" onclick="return confirm('Bạn có thực sự muốn xóa');">Delete</a></button>
                     </td>
                 </tr>
             }

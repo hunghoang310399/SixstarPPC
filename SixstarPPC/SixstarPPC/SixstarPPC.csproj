@@ -179,6 +179,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminLTE-bootstrap-social.css" />
+    <Content Include="Content\AdminLTE-bootstrap-social.min.css" />
+    <Content Include="Content\AdminLTE-fullcalendar.css" />
+    <Content Include="Content\AdminLTE-fullcalendar.min.css" />
+    <Content Include="Content\AdminLTE-select2.css" />
+    <Content Include="Content\AdminLTE-select2.min.css" />
+    <Content Include="Content\AdminLTE-without-plugins.css" />
+    <Content Include="Content\AdminLTE-without-plugins.min.css" />
     <Content Include="Images\ppc0001.jpg" />
     <Content Include="Images\ppc0002.jpg" />
     <Content Include="Images\ppc0003.jpg" />
@@ -399,6 +407,7 @@
     <Content Include="Areas\Admin\Views\PropertyAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PropertyAdmin\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

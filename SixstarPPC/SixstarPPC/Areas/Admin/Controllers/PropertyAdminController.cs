@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SixstarPPC.Models;
-
 namespace SixstarPPC.Areas.Admin.Controllers
 {
     
@@ -21,17 +22,16 @@ namespace SixstarPPC.Areas.Admin.Controllers
         public ActionResult Create()
         {
             PopularData();
-         
-           
             return View();
            
         }
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Property_Name,Property_Type_ID,Description,District_ID,Address,Area,Bed_Room,Bath_Room,Price,Installment_Rate,Avatar,Album,Property_Status_ID")]Property property)
+        public ActionResult Create(Property property)
         {
            
             if (ModelState.IsValid)
             {
+                property.Installment_Rate = 0.7;
                 model.Properties.Add(property);
                 model.SaveChanges();
                PopularMessage(true);
@@ -52,13 +52,56 @@ namespace SixstarPPC.Areas.Admin.Controllers
             }
 
         }
-        public ActionResult Edit(int? id)
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
-            var porperty = model.Properties.Find(id);
-            PopularData(porperty.Property_Type_ID,porperty.District_ID,porperty.Property_Status_ID);
-            return View(porperty);
+            PopularData();
+            var property = model.Properties.FirstOrDefault(x => x.ID == id);
+            return View(property);
         }
 
+        [HttpPost]
+        public ActionResult Edit(int id, Property p)
+        {
+            if (id == p.ID)
+            {
+                var property = model.Properties.FirstOrDefault(x => x.ID == id);
+                property.Property_Name = p.Property_Name;
+                property.Property_Type_ID = p.Property_Type_ID;
+                property.Description = p.Description;
+                property.District_ID = p.District_ID;
+                property.Address = p.Address;
+                property.Area = p.Area;
+                property.Avatar = p.Avatar;
+                property.Album = p.Album;
+                property.Bath_Room = p.Bath_Room;
+                property.Bed_Room = p.Bed_Room;
+                property.Price = p.Price;
+                property.Installment_Rate = p.Installment_Rate;
+                property.Property_Status_ID = p.Property_Status_ID;
+                model.SaveChanges();
+            }
+            else { PopularMessage(false); }
+
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var property = model.Properties.FirstOrDefault(x => x.ID == id);
+            return View(property);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteComfirm(int id)
+        {
+            var property = model.Properties.FirstOrDefault(x => x.ID == id);
+            model.Properties.Remove(property);
+            model.SaveChanges();
+            return RedirectToAction("Index");
+        }
         public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStatusSelected =null)
         {
             ViewBag.Property_Type_ID = new SelectList(model.Property_Type.ToList(), "ID", "Property_Type_Name",propertyTypeSelected);
