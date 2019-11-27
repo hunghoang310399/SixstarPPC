@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SixstarPPC.Models;
 
 namespace SixstarPPC.Controllers
 {
     public class HomeController : Controller
     {
+        ppcdbEntities model = new ppcdbEntities();
         public ActionResult Index()
         {
-            return View();
+            var porperty = model.Properties.ToList();
+            return View(porperty);
         }
 
         public ActionResult About()
