@@ -409,6 +409,7 @@
     <Content Include="Areas\Admin\Views\PropertyAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyAdmin\Details.cshtml" />
+    <Content Include=".editorconfig" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

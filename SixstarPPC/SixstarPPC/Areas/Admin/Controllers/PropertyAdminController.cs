@@ -104,7 +104,7 @@ namespace SixstarPPC.Areas.Admin.Controllers
         }
         public ActionResult Details(int id)
         {
-            PopularData();
+//            PopularData();
             var property = model.Properties.FirstOrDefault(x => x.ID == id);
             return View(property);
         }

@@ -104,23 +104,44 @@
                 @Html.ValidationMessageFor(model => model.Installment_Rate, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        
         <div class="form-group">
             @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+                @if (!String.IsNullOrEmpty(Model.Avatar) && Model.Avatar != "")
+                {<img src="@(Url.Content("~/Images/" + Model.Avatar))" width="80" />}
+                <input name="file" type="file" multiple/>
             </div>
         </div>
+        @* <div class="form-group"> *@
+        @*     @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" }) *@
+        @*     <div class="col-md-10"> *@
+        @*         @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } }) *@
+        @*         @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" }) *@
+        @*     </div> *@
+        @* </div> *@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Album, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Album, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Album, "", new { @class = "text-danger" })
+                @if (!String.IsNullOrEmpty(Model.Album) && Model.Album != "")
+                {
+                    foreach (var image in Model.Album.Split(';'))
+                    {
+                        if (!String.IsNullOrEmpty(image) || image != "")
+                        {
+                            int i = 0;
+                            <span id="image-@(i)">
+                                <img src="@(Url.Content("~/Images/" + image))" width="80" />
+                                <button type="button" class="btn btn-danger" onclick="@("deleteImage(\"" + image + "\"," + Model.ID + "," + i + ");")">Delete</button>
+                            </span>
+                            i++;
+                        }
+                    }
+                }
             </div>
         </div>
-
+    
         <div class="form-group">
             @Html.LabelFor(model => model.Property_Status_ID, "Property_Status_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

@@ -92,7 +92,7 @@
                     Hình ảnh
                 </label>
                 <div class="col-md-10">
-                    <input type="file" name="UpPhoto" class="form-control" />
+                    <input name="UpPhoto" type="file" multiple />
                     @Html.HiddenFor(m => m.Avatar)
                 </div>
             </div>
@@ -123,11 +123,7 @@
             </div>
         </div>
     </div>
-    <script>
-  tinymce.init({
-    selector: '#mytextarea'
-  });
-  </script>
+  
 }
 
 <div>
