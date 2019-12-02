@@ -4,16 +4,18 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-@using (Html.BeginForm()) 
+@Html.ValidationSummary(true)
+@using (Html.BeginForm("Create", "PropertyAdmin",
+    FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="box box-info">
-       
+
         <div class="form-horizontal">
             <h3>Thêm bất động sản</h3>
             <hr />
-            
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Property_Name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -92,7 +94,7 @@
                     Hình ảnh
                 </label>
                 <div class="col-md-10">
-                    <input name="UpPhoto" type="file" multiple />
+                    <input name="file" type="file" required />
                     @Html.HiddenFor(m => m.Avatar)
                 </div>
             </div>
@@ -101,7 +103,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Album, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Album, new { htmlAttributes = new { @class = "form-control" } })
+                    <input name="files" type="file" multiple />
                     @Html.ValidationMessageFor(model => model.Album, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -115,7 +117,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -123,7 +125,7 @@
             </div>
         </div>
     </div>
-  
+
 }
 
 <div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -26,11 +27,39 @@ namespace SixstarPPC.Areas.Admin.Controllers
            
         }
         [HttpPost]
-        public ActionResult Create(Property property)
+        public ActionResult Create(Property property ,List<HttpPostedFileBase> files)
         {
            
             if (ModelState.IsValid)
             {
+                string album = "";
+                Random random = new Random();
+                var file = Request.Files["file"];
+               
+                if (files != null)
+                {
+                    foreach (var imageFile in files)
+                    {
+                        if (imageFile != null)
+                        {
+                            var fileName = random.Next(1, 99999).ToString() + Path.GetFileName(imageFile.FileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                            // The files are not actually saved in this demo
+                            imageFile.SaveAs(physicalPath);
+                            album += album.Length > 0 ? ";" + fileName : fileName;
+                        }
+                    }
+                }
+                property.Album = album;
+                // Avatar
+                if (file != null)
+                {
+                    var avatar = random.Next(1, 99999).ToString() + Path.GetFileName(file.FileName);
+                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                    file.SaveAs(physicPath);
+                    property.Avatar = avatar;
+                }
                 property.Installment_Rate = 0.7;
                 model.Properties.Add(property);
                 model.SaveChanges();
