@@ -5,20 +5,23 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Chỉnh Sửa</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PropertyAdmin",
+    FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Property</h4>
+        <h4>Bất Động Sản</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Property_Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Mã Bất Động Sản
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Property_Code, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Property_Code, "", new { @class = "text-danger" })
@@ -26,7 +29,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Property_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Tên Bất Động Sản
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Property_Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Property_Name, "", new { @class = "text-danger" })
@@ -34,7 +39,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Property_Type_ID, "Property_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Loại Bất Động Sản
+            </label>
             <div class="col-md-10">
                 @Html.DropDownList("Property_Type_ID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Property_Type_ID, "", new { @class = "text-danger" })
@@ -42,15 +49,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Mô tả
+            </label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, id = "mytextarea" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.District_ID, "District_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Quận
+            </label>
             <div class="col-md-10">
                 @Html.DropDownList("District_ID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.District_ID, "", new { @class = "text-danger" })
@@ -58,7 +68,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Địa Chỉ
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
@@ -66,7 +78,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Diện Tích
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
@@ -74,7 +88,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Bed_Room, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Phòng Ngủ
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Bed_Room, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Bed_Room, "", new { @class = "text-danger" })
@@ -82,7 +98,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Bath_Room, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Phòng Tắm
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Bath_Room, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Bath_Room, "", new { @class = "text-danger" })
@@ -90,7 +108,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Giá bán ra
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -98,32 +118,32 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Installment_Rate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Lãi Suất
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Installment_Rate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Installment_Rate, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Ảnh Đại Diện
+            </label>
             <div class="col-md-10">
                 @if (!String.IsNullOrEmpty(Model.Avatar) && Model.Avatar != "")
                 {<img src="@(Url.Content("~/Images/" + Model.Avatar))" width="80" />}
-                <input name="file" type="file" multiple/>
-            </div>
+                <input name="file" type="file" multiple />
+                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>,
         </div>
-        @* <div class="form-group"> *@
-        @*     @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" }) *@
-        @*     <div class="col-md-10"> *@
-        @*         @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } }) *@
-        @*         @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" }) *@
-        @*     </div> *@
-        @* </div> *@
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Album, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Bộ Sưu Tập
+            </label>
             <div class="col-md-10">
+                @Html.EditorFor(model => model.Album, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @if (!String.IsNullOrEmpty(Model.Album) && Model.Album != "")
                 {
                     foreach (var image in Model.Album.Split(';'))
@@ -138,12 +158,15 @@
                             i++;
                         }
                     }
+
                 }
             </div>
         </div>
-    
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Property_Status_ID, "Property_Status_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Trạng Thái
+            </label>
             <div class="col-md-10">
                 @Html.DropDownList("Property_Status_ID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Property_Status_ID, "", new { @class = "text-danger" })
@@ -156,8 +179,25 @@
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+}
+<script>
+    function deleteImage(image, id, i) {
+        event.preventDefault();
+        $.post("/Admin/PropertyAdmin/deleteImage",
+            {
+                imageName: image,
+                id: id
+            },
+            function (data, status) {
+                $("#album").val(data);
+                $("#image-" + i).hide();
+            });
+    }
+</script>
+   
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

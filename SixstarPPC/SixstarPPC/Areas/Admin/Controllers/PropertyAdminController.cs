@@ -33,16 +33,16 @@ namespace SixstarPPC.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string album = "";
-                Random random = new Random();
+          
                 var file = Request.Files["file"];
-               
+               //up album
                 if (files != null)
                 {
                     foreach (var imageFile in files)
                     {
                         if (imageFile != null)
                         {
-                            var fileName = random.Next(1, 99999).ToString() + Path.GetFileName(imageFile.FileName);
+                            var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
                             var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
 
                             // The files are not actually saved in this demo
@@ -55,7 +55,7 @@ namespace SixstarPPC.Areas.Admin.Controllers
                 // Avatar
                 if (file != null)
                 {
-                    var avatar = random.Next(1, 99999).ToString() + Path.GetFileName(file.FileName);
+                    var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
                     var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
                     file.SaveAs(physicPath);
                     property.Avatar = avatar;
@@ -70,7 +70,14 @@ namespace SixstarPPC.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
-
+        //json district
+        public JsonResult GetDistrictByCityId(int id)
+        {
+            // Disable proxy creation
+            model.Configuration.ProxyCreationEnabled = false;
+            var listDistrict = model.Districts.Where(x => x.City_ID == id).ToList();
+            return Json(listDistrict, JsonRequestBehavior.AllowGet);
+        }
         public void PopularMessage(bool success)
         {
             if (success)
@@ -94,6 +101,15 @@ namespace SixstarPPC.Areas.Admin.Controllers
         {
             if (id == p.ID)
             {
+                //upload ảnh
+                var file = Request.Files["file"];
+                if (file != null)
+                {
+                    var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
+                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                    file.SaveAs(physicPath);
+                    p.Avatar = avatar;
+                }
                 var property = model.Properties.FirstOrDefault(x => x.ID == id);
                 property.Property_Name = p.Property_Name;
                 property.Property_Type_ID = p.Property_Type_ID;
@@ -137,8 +153,28 @@ namespace SixstarPPC.Areas.Admin.Controllers
             var property = model.Properties.FirstOrDefault(x => x.ID == id);
             return View(property);
         }
-        public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStatusSelected =null)
+        //delete Ảnh trong album
+        [HttpPost]
+        public string deleteImage(string imageName, int id)
         {
+            string fullPath = Request.MapPath("~/Images" + imageName);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            var property = model.Properties.FirstOrDefault(x => x.ID == id);
+            var album = property.Album.Split(';');
+            album = album.Where(w => w != imageName).ToArray();
+            property.Album = string.Join(";", album);
+
+            model.Entry(property).State = EntityState.Modified;
+            model.SaveChanges();
+            return property.Album;
+        }
+        public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStatusSelected =null, object listCitySelected = null)
+        {
+            ViewBag.Property_Status_ID = new SelectList(model.Property_Status.ToList(), "ID", "Property_Status_Name", propertyStatusSelected);
+            ViewBag.CityList = new SelectList(model.Cities.ToList(), "ID", "City_Name", listCitySelected);
             ViewBag.Property_Type_ID = new SelectList(model.Property_Type.ToList(), "ID", "Property_Type_Name",propertyTypeSelected);
             ViewBag.District_ID = new SelectList(model.Districts.ToList(), "ID", "District_Name", districtSelected);
             ViewBag.Property_Status_ID = new SelectList(model.Property_Status.ToList(), "ID", "Property_Status_Name", propertyStatusSelected);

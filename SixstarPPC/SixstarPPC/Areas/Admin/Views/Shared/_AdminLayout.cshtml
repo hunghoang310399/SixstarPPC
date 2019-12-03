@@ -83,7 +83,7 @@
                         <img src="~/Images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Bê đê mập</a>
+                        <a href="#" class="d-block">Six Star</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -167,7 +167,13 @@
     <script src="~/Scripts/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Scripts/demo.js"></script>
-    <!-- page script -->
+<!-- page script -->
+<script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#mytextarea'
+    });
+</script>
     <script>
         $(function () {
             $("#example1").DataTable();

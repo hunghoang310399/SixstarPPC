@@ -15,9 +15,10 @@
         <div class="form-horizontal">
             <h3>Thêm bất động sản</h3>
             <hr />
-
             <div class="form-group">
-                @Html.LabelFor(model => model.Property_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Tên Bất Động Sản
+                </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Property_Name, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Property_Name, "", new { @class = "text-danger" })
@@ -25,7 +26,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Property_Type_ID, "Property_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Loại Bất Động Sản
+                </label>
                 <div class="col-md-10">
                     @Html.DropDownList("Property_Type_ID", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Property_Type_ID, "", new { @class = "text-danger" })
@@ -33,17 +36,26 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Mô tả
+                </label>
                 <div class="col-md-10">
-                    <div>
-
-                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "mytextarea" } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                    </div>
+                    <textarea id="mytextarea" name="mytextarea"></textarea>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.District_ID, "District_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Thành Phố   
+                </label>
+                <div class="col-md-10">
+                    @Html.DropDownList("CityList", null, "--Select City--",htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Quận
+                </label>
                 <div class="col-md-10">
                     @Html.DropDownList("District_ID", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.District_ID, "", new { @class = "text-danger" })
@@ -51,7 +63,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Địa Chỉ
+                </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
@@ -59,7 +73,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Diện Tích
+                </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
@@ -67,7 +83,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Bed_Room, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Phòng Ngủ
+                </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Bed_Room, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Bed_Room, "", new { @class = "text-danger" })
@@ -75,7 +93,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Bath_Room, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Phòng Tắm
+                </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Bath_Room, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Bath_Room, "", new { @class = "text-danger" })
@@ -83,7 +103,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Giá bán ra
+                </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -91,17 +113,20 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">
-                    Hình ảnh
+                    Ảnh Đại Diện
                 </label>
                 <div class="col-md-10">
-                    <input name="file" type="file" required />
+                    <input name="file" type="file" id="file"  />
+
+                     
                     @Html.HiddenFor(m => m.Avatar)
                 </div>
             </div>
 
-
             <div class="form-group">
-                @Html.LabelFor(model => model.Album, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Bộ Sưu Tập
+                </label>
                 <div class="col-md-10">
                     <input name="files" type="file" multiple />
                     @Html.ValidationMessageFor(model => model.Album, "", new { @class = "text-danger" })
@@ -109,7 +134,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Property_Status_ID, "Property_Status_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">
+                    Trạng Thái
+                </label>
                 <div class="col-md-10">
                     @Html.DropDownList("Property_Status_ID", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Property_Status_ID, "", new { @class = "text-danger" })
@@ -126,6 +153,40 @@
         </div>
     </div>
 
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            var districtUrl = "/Admin/PropertyAdmin/GetDistrictByCityId/";
+            $("#CityList").on('change', function () {
+                var id = $(this).val();
+                _getDistrict(id, "District_ID");
+            });
+            function _getDistrict(id, targetId) {
+                $.get(districtUrl + id, function (data) {
+                    if (data != null && data != undefined && data.length) {
+                        var html = '';
+                        html += '<option value="">--Select district--</option>';
+                        $.each(data, function (key, item) {
+                            html += '<option value=' + item.ID + '>' + item.District_Name + '</option>';
+                        });
+                        $("#" + targetId).html(html);
+                    } else {
+                        var html = '';
+                        html += '<option value="">--No district--</option>';
+                        $("#" + targetId).html(html);
+                    }
+                });
+
+            }
+        });
+    </script>
+  
 }
 
 <div>

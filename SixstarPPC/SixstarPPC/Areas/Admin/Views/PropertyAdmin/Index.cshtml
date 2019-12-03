@@ -21,11 +21,11 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Property_Code</th>
-                <th>Property_Name</th>
-                <th>Price</th>
-                <th>Avatar</th>
-                <th>Property_status_Name</th>
+                <th>Mã Bất Động Sản</th>
+                <th>Tên Bất Động Sản</th>
+                <th>Giá</th>
+                <th>Hình Ảnh</th>
+                <th>Trạng Thái</th>
                 <th></th>
             </tr>
         </thead>
@@ -41,7 +41,7 @@
                         @Html.DisplayFor(modelItem => item.Property_Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
+                        @string.Format("{0:0,0}", @item.Price) VNĐ
                     </td>
                     <td>
                         <img src="@(Url.Content("~/Images/" + item.Avatar))" width="80" />
@@ -50,9 +50,9 @@
                         @Html.DisplayFor(modelItem => item.Property_Status.Property_Status_Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-default" }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+                        <button class="btn btn-danger"><a href="~/Admin/PropertyAdmin/Delete/?id=@item.ID" onclick="return confirm('Bạn có thực sự muốn xóa');">Delete</a></button>
                     </td>
                 </tr>
             }
@@ -60,11 +60,11 @@
         </tbody>
         <tfoot>
             <tr>
-                <th>Property_Code</th>
-                <th>Property_Name</th>
-                <th>Price</th>
-                <th>Avatar</th>
-                <th>Property_status_Name</th>
+                <th>Mã Bất Động Sản</th>
+                <th>Tên Bất Động Sản</th>
+                <th>Giá</th>
+                <th>Hình Ảnh</th>
+                <th>Trạng Thái</th>
                 <th></th>
             </tr>
         </tfoot>
