@@ -97,12 +97,32 @@ namespace SixstarPPC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, Property p)
+        public ActionResult Edit(int id, Property p, List<HttpPostedFileBase> files)
         {
             if (id == p.ID)
             {
-                //upload ảnh
+                string album = "";
+
                 var file = Request.Files["file"];
+                //up album
+                if (files != null)
+                {
+                    foreach (var imageFile in files)
+                    {
+                        if (imageFile != null)
+                        {
+                            var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                            // The files are not actually saved in this demo
+                            imageFile.SaveAs(physicalPath);
+                            album += album.Length > 0 ? ";" + fileName : fileName;
+                        }
+                    }
+                }
+                p.Album = album;
+                //upload ảnh
+           
                 if (file != null)
                 {
                     var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);

@@ -1,0 +1,96 @@
+﻿@model SixstarPPC.Models.FullContractPrintModel
+@{
+    Layout = null;
+    ViewBag.Title = "Print";
+}
+
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Print</title>
+        <link href="~/Content/style.css" rel="stylesheet" />
+        <a href="~/webfonts/SourceSansPro-Regular.ttf"></a>
+    </head>
+    <body>
+        <header class="clearfix">
+            <div id="logo">
+                <img src="~/Images/PPCLogo-128-128.png" />
+            </div>
+            <div id="company">
+                <h2 class="name">Công ty PPC</h2>
+                <div> 45 Trần Hưng Đạo, P7, Q5, HCM</div>
+                <div>091-519-0450</div>
+                <div><a href="mailto:company@example.com">ppc@gmail.com</a></div>
+            </div>
+        </header>
+        <main>
+            <div>
+                <h1 style="text-align:center; color:#57B223">HỢP ĐỒNG MUA BẤT ĐỘNG SẢN</h1>
+                <h2 class="contract">@Model.Full_Contract_Code</h2>
+                <h4 class="date"> <i> Hôm nay, ngày @Model.Data_Of_Contract. Chúng tôi gồm: </i></h4>
+            </div>
+            <div id="details" class="clearfix">
+                <table border="1">
+                    <tr>
+                        <td style="border-right:1px solid black">
+                            <div id="client">
+                                <div class="to">BÊN A:</div>
+                                <h2 class="company">Công ty PPC</h2>
+                                <div class="address">45 Trần Hưng Đạo, P7, Q5, HCM</div>
+                                <div class="mobile">091-519-0450</div>
+                                <div class="tax">000-519-0450</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="invoice">
+                                <div class="to">BÊN B:</div>
+                                <h2 class="customername">@Model.Customer_Name</h2>
+                                <div class="customeraddress">@Model.Customer_Address</div>
+                                <div class="customermobile">@Model.Mobile</div>
+                                <div class="ssn">@Model.SSN</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <span>
+                <h4>Sau khi bàn bạc, hai bên thống nhất ký kết Hợp đồng với các điều kiện và điều khoản như sau: </h4>
+                <h4>Điều 1: Đối tượng của hợp đồng</h4>
+
+                <div class="paddress">1. Đối tượng của hợp đồng này là ngôi nhà: <b class="property"> @Model.Address (Mã bất động sản:@Model.Property_Code)</b></div>
+                2. Công ty ABC là chủ sở hữu nhà ở và sử dụng đất ở trên.
+
+                <h4>Điều 2. Giá và phương thức thanh toán</h4>
+                <div class="pprice"> 1. Giá mua bán toàn bộ căn nhà nêu trên là:<b class="money">@string.Format("{0:0,0}", @Model.Price) VNĐ</b>.</div>
+                <div class="pdeposit">2. Bên B đã đặt cọc cho Bên A số tiền: <b class="money">@string.Format("{0:0,0}", @Model.Deposit) VNĐ</b></div>
+                3. Bên B thanh toán số tiền còn lại một lần cho Bên A bằng đồng Việt Nam.
+                4. Bên B giao và Bên A nhận đủ số tiền mua bán căn nhà nêu trên. Việc giao và nhận số tiền nêu trên do hai bên tự thực hiện và chịu trách nhiệm trước pháp luật.
+
+                <h4>Điều 3. Điều khoản cuối cùng</h4>
+
+                <p> 1. Hai bên đã hiểu rõ quyền, nghĩa vụ và lợi ích hợp pháp của mình, ý nghĩa và hậu quả pháp lý của việc công chứng này, sau khi đã được nghe lời giải thích của người có thẩm quyền công chứng hoặc chứng thực dưới đây. </p>
+
+                <p> 2. Hai bên đã tự đọc lại hợp đồng này, đã hiểu và đồng ý tất cả các điều khoản ghi trong hợp đồng này.</p>
+
+                <p> 3. Hợp đồng này được lập thành 02 bản. Bên A giữ 01 bản, Bên B giữ 01 bản</p>
+            </span>
+            <table style="text-align:center;">
+                <tr>
+                    <td class="sign">
+                        <h4> BÊN BÁN </h4>
+                        <h3>(Ký và ghi rõ họ và tên) </h3>
+                    </td>
+                    <td class="sign">
+                        <h4>BÊN MUA </h4>
+                        <h3>(Ký và ghi rõ họ và tên) </h3>
+                    </td>
+                </tr>
+            </table>
+
+
+        </main>
+        <footer>
+            Công ty ABC - Tài sản thực, giá trị thực.
+        </footer>
+    </body>
+    </html>

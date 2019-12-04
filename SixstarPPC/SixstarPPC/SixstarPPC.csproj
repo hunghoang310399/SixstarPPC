@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\FullContractAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Installment_ContractAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\PropertyAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,9 +142,11 @@
     <Compile Include="Models\District.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FullContractPrintModel.cs" />
     <Compile Include="Models\Full_Contract.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\InstallmentContractPrintModel.cs" />
     <Compile Include="Models\Installment_Contract.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -187,6 +191,7 @@
     <Content Include="Content\AdminLTE-select2.min.css" />
     <Content Include="Content\AdminLTE-without-plugins.css" />
     <Content Include="Content\AdminLTE-without-plugins.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Images\ppc0001.jpg" />
     <Content Include="Images\ppc0002.jpg" />
     <Content Include="Images\ppc0003.jpg" />
@@ -410,6 +415,10 @@
     <Content Include="Areas\Admin\Views\PropertyAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\PropertyAdmin\Details.cshtml" />
     <Content Include=".editorconfig" />
+    <Content Include="Areas\Admin\Views\FullContractAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FullContractAdmin\Print.cshtml" />
+    <Content Include="Areas\Admin\Views\Installment_ContractAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Installment_ContractAdmin\Print.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -450,6 +459,7 @@
     <Content Include="webfonts\fa-solid-900.ttf" />
     <Content Include="webfonts\fa-solid-900.woff" />
     <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="webfonts\SourceSansPro-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

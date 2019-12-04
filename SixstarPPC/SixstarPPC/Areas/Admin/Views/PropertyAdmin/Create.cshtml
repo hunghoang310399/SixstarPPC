@@ -40,7 +40,7 @@
                     Mô tả
                 </label>
                 <div class="col-md-10">
-                    <textarea id="mytextarea" name="mytextarea"></textarea>
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, id = "mytextarea" })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>

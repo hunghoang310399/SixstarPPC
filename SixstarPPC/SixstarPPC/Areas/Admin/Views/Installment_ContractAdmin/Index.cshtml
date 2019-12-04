@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SixstarPPC.Models.Installment_Contract>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    @if (Session["success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Well done!</strong> @Session["success"]
+        </div>
+    }
+</p>
+<div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã Hợp đồng </th>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>CMND</th>
+                <th>Địa chỉ</th>
+                <th>Số Điện Thoại</th>
+                <th> Mã bất động sản</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Installment_Contract_Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year_Of_Birth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SSN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer_Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property.Property_Code)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Print", "Print", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Mã Hợp đồng </th>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>CMND</th>
+                <th>Địa chỉ</th>
+                <th>Số Điện Thoại</th>
+                <th> Mã bất động sản</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
