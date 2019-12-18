@@ -18,15 +18,13 @@
     }
 </p>
 <div class="card-body">
-    <table id="example1" class="table table-bordered table-striped">
+    <table id="example" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Mã Hợp đồng </th>
                 <th>Tên</th>
-                <th>Ngày sinh</th>
                 <th>CMND</th>
                 <th>Địa chỉ</th>
-                <th>Số Điện Thoại</th>
                 <th> Mã bất động sản</th>
             </tr>
         </thead>
@@ -42,16 +40,10 @@
                         @Html.DisplayFor(modelItem => item.Customer_Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Year_Of_Birth)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.SSN)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Customer_Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Mobile)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Property.Property_Code)
@@ -68,12 +60,32 @@
             <tr>
                 <th>Mã Hợp đồng </th>
                 <th>Tên</th>
-                <th>Ngày sinh</th>
                 <th>CMND</th>
                 <th>Địa chỉ</th>
-                <th>Số Điện Thoại</th>
                 <th> Mã bất động sản</th>
             </tr>
         </tfoot>
     </table>
 </div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+
+            });
+        });
+    </script>
+}

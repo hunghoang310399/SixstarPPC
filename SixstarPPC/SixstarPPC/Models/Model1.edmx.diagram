@@ -21,6 +21,7 @@
         <AssociationConnector Association="ppcdbModel.FK_Property_Property_Status" ManuallyRouted="false" />
         <AssociationConnector Association="ppcdbModel.FK_Property_Property_Type" ManuallyRouted="false" />
         <AssociationConnector Association="ppcdbModel.FK_Property_Service_Service" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ppcdbModel.Account" Width="1.5" PointX="0.75" PointY="10.75" FillColor="Red" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

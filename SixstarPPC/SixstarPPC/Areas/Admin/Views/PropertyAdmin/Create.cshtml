@@ -40,7 +40,8 @@
                     Mô tả
                 </label>
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, id = "mytextarea" })
+                    <textarea id="Description" name="Description"></textarea>
+                
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -116,10 +117,8 @@
                     Ảnh Đại Diện
                 </label>
                 <div class="col-md-10">
-                    <input name="file" type="file" id="file"  />
-
-                     
-                    @Html.HiddenFor(m => m.Avatar)
+                    <input name="file" type="file" id="file" />
+                    @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
                 </div>
             </div>
 

@@ -27,6 +27,8 @@ namespace SixstarPPC.Areas.Admin.Controllers
            
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(Property property ,List<HttpPostedFileBase> files)
         {
            
@@ -63,11 +65,16 @@ namespace SixstarPPC.Areas.Admin.Controllers
                 property.Installment_Rate = 0.7;
                 model.Properties.Add(property);
                 model.SaveChanges();
-               PopularMessage(true);
+                PopularMessage(true);
+                return RedirectToAction("Index");
             }
-            else { PopularMessage(false); }
+            else {
+                PopularData();
+                return View();
+            }
          
-            return RedirectToAction("Index");
+
+
 
         }
         //json district
@@ -97,6 +104,8 @@ namespace SixstarPPC.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(int id, Property p, List<HttpPostedFileBase> files)
         {
             if (id == p.ID)
