@@ -10,15 +10,13 @@
 namespace SixstarPPC.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Property_Service
+    public partial class sp_helpdiagrams_Result
     {
+        public string Database { get; set; }
+        public string Name { get; set; }
         public int ID { get; set; }
-        public int Service_ID { get; set; }
-        public int Property_ID { get; set; }
-    
-        public virtual Service Service { get; set; }
-        public virtual Property Property { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

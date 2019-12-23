@@ -6,12 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Transactions;
 using SixstarPPC.Models;
 namespace SixstarPPC.Areas.Admin.Controllers
 {
-    
+
     public class PropertyAdminController : Controller
-    { 
+    {
         ppcdbEntities model = new ppcdbEntities();
         // GET: Admin/PropertyAdmin
         public ActionResult Index()
@@ -23,59 +24,68 @@ namespace SixstarPPC.Areas.Admin.Controllers
         public ActionResult Create()
         {
             PopularData();
+            ViewBag.Service_ID = new MultiSelectList(model.Services.ToList(), "ID", "Service_Name",null);
             return View();
-           
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create(Property property ,List<HttpPostedFileBase> files)
+        public ActionResult Create(Property property, List<HttpPostedFileBase> files, List<int> Service_ID, HttpPostedFileBase file)
         {
-           
+
             if (ModelState.IsValid)
             {
-                string album = "";
-          
-                var file = Request.Files["file"];
-               //up album
-                if (files != null)
+                using (var scope = new TransactionScope())
                 {
-                    foreach (var imageFile in files)
-                    {
-                        if (imageFile != null)
-                        {
-                            var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
-                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                    model.Properties.Add(property);
+                    string album = "";
 
-                            // The files are not actually saved in this demo
-                            imageFile.SaveAs(physicalPath);
-                            album += album.Length > 0 ? ";" + fileName : fileName;
+
+                    //up album
+                    if (files != null)
+                    {
+                        foreach (var imageFile in files)
+                        {
+                            if (imageFile != null)
+                            {
+                                var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
+                                var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                                // The files are not actually saved in this demo
+                                imageFile.SaveAs(physicalPath);
+                                album += album.Length > 0 ? ";" + fileName : fileName;
+                            }
                         }
                     }
+                    property.Album = album;
+                    // Avatar
+                    if (file != null)
+                    {
+                        var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
+                        var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                        file.SaveAs(physicPath);
+                        property.Avatar = avatar;
+                    }
+                    foreach (var item in Service_ID)
+                    {
+                        
+                        Property_Service properS = new Property_Service();
+                        properS.Property_ID = property.ID;
+                        properS.Service_ID = item;
+                        model.Property_Service.Add(properS);
+                    }
+                    property.Installment_Rate = 0.7;
+                    model.SaveChanges();
+
+                    scope.Complete();
+                    PopularMessage(true);
+                    return RedirectToAction("Index");
                 }
-                property.Album = album;
-                // Avatar
-                if (file != null)
-                {
-                    var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
-                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
-                    file.SaveAs(physicPath);
-                    property.Avatar = avatar;
-                }
-                property.Installment_Rate = 0.7;
-                model.Properties.Add(property);
-                model.SaveChanges();
-                PopularMessage(true);
-                return RedirectToAction("Index");
             }
-            else {
-                PopularData();
-                return View();
-            }
-         
-
-
-
+            ViewBag.Service_ID = new MultiSelectList(model.Services.ToList(), "ID", "Service_Name", null);
+            PopularData();
+            return View();
         }
         //json district
         public JsonResult GetDistrictByCityId(int id)
@@ -131,7 +141,7 @@ namespace SixstarPPC.Areas.Admin.Controllers
                 }
                 p.Album = album;
                 //upload ảnh
-           
+
                 if (file != null)
                 {
                     var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
@@ -178,7 +188,7 @@ namespace SixstarPPC.Areas.Admin.Controllers
         }
         public ActionResult Details(int id)
         {
-//            PopularData();
+            //            PopularData();
             var property = model.Properties.FirstOrDefault(x => x.ID == id);
             return View(property);
         }
@@ -200,13 +210,14 @@ namespace SixstarPPC.Areas.Admin.Controllers
             model.SaveChanges();
             return property.Album;
         }
-        public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStatusSelected =null, object listCitySelected = null)
+        public void PopularData(IQueryable<int> selectedService = null, object propertyTypeSelected = null, object districtSelected = null, object propertyStatusSelected = null, object listCitySelected = null)
         {
             ViewBag.Property_Status_ID = new SelectList(model.Property_Status.ToList(), "ID", "Property_Status_Name", propertyStatusSelected);
             ViewBag.CityList = new SelectList(model.Cities.ToList(), "ID", "City_Name", listCitySelected);
-            ViewBag.Property_Type_ID = new SelectList(model.Property_Type.ToList(), "ID", "Property_Type_Name",propertyTypeSelected);
+            ViewBag.Property_Type_ID = new SelectList(model.Property_Type.ToList(), "ID", "Property_Type_Name", propertyTypeSelected);
             ViewBag.District_ID = new SelectList(model.Districts.ToList(), "ID", "District_Name", districtSelected);
             ViewBag.Property_Status_ID = new SelectList(model.Property_Status.ToList(), "ID", "Property_Status_Name", propertyStatusSelected);
+            ViewBag.Service_ID = new MultiSelectList(model.Services.ToList(), "ID", "Service_Name", selectedService);
         }
 
     }

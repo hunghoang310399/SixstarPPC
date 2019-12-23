@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="ppcdbModel.Full_Contract" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ppcdbModel.Installment_Contract" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ppcdbModel.Property" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ppcdbModel.Property_Service" Width="1.5" PointX="12" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppcdbModel.Property_Service" Width="1.5" PointX="13" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="ppcdbModel.Property_Status" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ppcdbModel.Property_Type" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="ppcdbModel.Service" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
@@ -22,6 +22,8 @@
         <AssociationConnector Association="ppcdbModel.FK_Property_Property_Type" ManuallyRouted="false" />
         <AssociationConnector Association="ppcdbModel.FK_Property_Service_Service" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ppcdbModel.Account" Width="1.5" PointX="0.75" PointY="10.75" FillColor="Red" />
+        <EntityTypeShape EntityType="ppcdbModel.sysdiagram" Width="1.5" PointX="13.5" PointY="6.125" />
+        <AssociationConnector Association="ppcdbModel.FK_Property_Service_Property" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

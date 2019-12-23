@@ -12,13 +12,12 @@ namespace SixstarPPC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Property_Service
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public int Service_ID { get; set; }
-        public int Property_ID { get; set; }
-    
-        public virtual Service Service { get; set; }
-        public virtual Property Property { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
