@@ -42,5 +42,10 @@ namespace SixstarPPC.Areas.Admin.Controllers
             }
            
         }
+        public ActionResult Create()
+        {
+            ViewBag.Property_ID = new MultiSelectList(model.Properties.ToList(), "ID", "Property_Name", null);
+            return View();
+        }
     }
 }
