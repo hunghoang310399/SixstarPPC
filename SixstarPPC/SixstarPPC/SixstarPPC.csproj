@@ -542,6 +542,9 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout1.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout2.cshtml" />
     <Content Include="Areas\Admin\Views\FullContractAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\FullContractAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Installment_ContractAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Installment_ContractAdmin\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

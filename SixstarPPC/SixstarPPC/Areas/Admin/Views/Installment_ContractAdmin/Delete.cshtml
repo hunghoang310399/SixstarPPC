@@ -1,0 +1,153 @@
+﻿@model SixstarPPC.Models.Installment_Contract
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Installment_Contract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Installment_Contract_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Installment_Contract_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year_Of_Birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year_Of_Birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Of_Contract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Of_Contract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Installment_Payment_Method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Installment_Payment_Method)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_Period)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_Period)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deposit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loan_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loan_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remain)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property.Property_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property.Property_Code)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

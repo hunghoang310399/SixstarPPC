@@ -277,7 +277,7 @@
                             <img class="card-img-top" src="@(Url.Content("~/Images/" + item.Avatar))" alt="">
                             
                             <div class="card-body">
-                                <div class="card-title"><a href="~/Home/SinglePropety">@Html.DisplayFor(modelItem => item.Property_Name)</a></div>
+                                <div class="card-title"><a href="~/Home/SinglePropety/@item.ID">@Html.DisplayFor(modelItem => item.Property_Name)</a></div>
                                 <div class="card-text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</div>
                                 <div class="rooms">
 
@@ -304,8 +304,8 @@
                                             <span class="room_number">@Html.DisplayFor(modelItem => item.Area)</span>
                                         </div>
                                     </div>
-
-
+                             
+                                
                                 </div>
 
                                 <div class="room_tags">
@@ -323,7 +323,7 @@
                             <img src="~/Content/Index/images/tag.svg" alt="https://www.flaticon.com/authors/lucy-g">
                             <div class="featured_card_box_content">
                                 <div class="featured_card_price_title">For Sale</div>
-                                <div class="featured_card_price">@Html.DisplayFor(modelItem => item.Price)</div>
+                                <div class="featured_card_price"> @string.Format("{0:0,0}",item.Price) VND</div>
                             </div>
                         </div>
 

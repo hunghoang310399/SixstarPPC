@@ -41,11 +41,10 @@ namespace SixstarPPC.Controllers
 
             return View();
         }
-        public ActionResult SinglePropety()
+        public ActionResult SinglePropety(int id)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var property = model.Properties.FirstOrDefault(x => x.ID == id);
+            return View(property);
         }
     }
 }
